@@ -1,0 +1,2750 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Factarni API",
+    "version": "2.0"
+  },
+  "paths": {
+    "/register": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Create an account for the user",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "username",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the user to create"
+          },
+          {
+            "in": "body",
+            "name": "login",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Login of the user to create"
+          },
+          {
+            "in": "body",
+            "name": "role",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Role of the user to create"
+          },
+          {
+            "in": "body",
+            "name": "uid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "the created user id"
+          },
+          {
+            "in": "body",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the user's company"
+          },
+          {
+            "in": "body",
+            "name": "address",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Address of the company"
+          },
+          {
+            "in": "body",
+            "name": "telephone",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Telephone of the company"
+          },
+          {
+            "in": "body",
+            "name": "logo",
+            "schema": {},
+            "required": true,
+            "description": "Logo of the company"
+          },
+          {
+            "in": "body",
+            "name": "fax",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Fax of the company"
+          },
+          {
+            "in": "body",
+            "name": "rib",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "RIB of the company"
+          },
+          {
+            "in": "body",
+            "name": "tax_identification",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Tax id of the company"
+          },
+          {
+            "in": "body",
+            "name": "timbre",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Stamp of the company"
+          },
+          {
+            "in": "body",
+            "name": "digits",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Number of digits of the company amounts"
+          },
+          {
+            "in": "body",
+            "name": "quantity_digits",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Number of digits for the company quantities"
+          },
+          {
+            "in": "body",
+            "name": "discount",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Availability of a discount on the company articles"
+          },
+          {
+            "in": "body",
+            "name": "article_edition",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "The company article editions"
+          },
+          {
+            "in": "body",
+            "name": "footer",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The company's footer for the invoices and estimates"
+          },
+          {
+            "in": "body",
+            "name": "config",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The company configuration data"
+          },
+          {
+            "in": "body",
+            "name": "invoice_template_id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "id of the invoice template of the company"
+          },
+          {
+            "in": "body",
+            "name": "estimate_template_id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "id of the estimate template of the company"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "login already exists"
+          },
+          "420": {
+            "description": "missing credentials"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Login into a user account",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "non authorized"
+          },
+          "400": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Get user informations",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "User not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "Edit user informations",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the user"
+          },
+          {
+            "in": "body",
+            "name": "signature",
+            "schema": {},
+            "required": true,
+            "description": "Signature of the user"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          }
+        }
+      }
+    },
+    "/deleteuser": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "description": "Delete an user account",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "User deleted succesfully"
+          },
+          "400": {
+            "description": "User not deleted"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Logout from a user account",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "token not found"
+          },
+          "420": {
+            "description": "invalid data"
+          }
+        }
+      }
+    },
+    "/invoice/create": {
+      "post": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "Create an invoice",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "header",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Data of the invoice"
+          },
+          {
+            "in": "body",
+            "name": "lines",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Data of the invoice line"
+          },
+          {
+            "in": "body",
+            "name": "file",
+            "schema": {},
+            "required": true,
+            "description": "Signature of the invoice"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/invoice/monthly": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "Get invoice informations per month",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "year",
+            "type": "string",
+            "required": true,
+            "description": "Year to get the invoice monthly informations of"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/invoice/year": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "Get invoice informations per year",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/invoiceline/:id/create": {
+      "post": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "Create an invoice line for a specific invoice",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the invoice that will contain the created invoice line"
+          },
+          {
+            "in": "body",
+            "name": "code",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Code of the invoice line"
+          },
+          {
+            "in": "body",
+            "name": "article",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Article of the invoice line"
+          },
+          {
+            "in": "body",
+            "name": "price",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Price of the article"
+          },
+          {
+            "in": "body",
+            "name": "quantity",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Quantity of the article"
+          },
+          {
+            "in": "body",
+            "name": "discount",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Discount on the Article price"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/invoice/:id": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "Get a specific invoice",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the invoice to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "Update a specific invoice",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the invoice to update"
+          },
+          {
+            "in": "body",
+            "name": "signature",
+            "schema": {},
+            "required": true,
+            "description": "Signature of the user"
+          },
+          {
+            "in": "body",
+            "name": "client",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Targeted client informations"
+          },
+          {
+            "in": "body",
+            "name": "company",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "User's company informations"
+          },
+          {
+            "in": "body",
+            "name": "discount",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Discount of the invoice"
+          },
+          {
+            "in": "body",
+            "name": "total_ht",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Total price without including the vat"
+          },
+          {
+            "in": "body",
+            "name": "total_vat",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Total vat"
+          },
+          {
+            "in": "body",
+            "name": "total_price",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Total price without including the vat + Total vat"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "Delete a specific invoice",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the invoice to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/invoiceline/:id": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "get a specific invoice line",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the invoice line to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "Edit a specific invoice line",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the invoice line to update"
+          },
+          {
+            "in": "body",
+            "name": "code",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Code of the invoice line"
+          },
+          {
+            "in": "body",
+            "name": "article",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Article of the invoice line"
+          },
+          {
+            "in": "body",
+            "name": "price",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Price of the article"
+          },
+          {
+            "in": "body",
+            "name": "quantity",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Quantity of the article"
+          },
+          {
+            "in": "body",
+            "name": "discount",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Discount on the article"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/hydratedinvoice/:id": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "Get a specific invoice and its invoice lines",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the hydrated(including the invoice and it's invoice line) invoice to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "Edit a specific invoice and its invoice lines",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the invoice to update"
+          },
+          {
+            "in": "body",
+            "name": "header",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "data of the invoice"
+          },
+          {
+            "in": "body",
+            "name": "lines",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "data od the invoice line"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/invoice": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "get all invoices of the logged user",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/invoice/:id/draft": {
+      "put": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "Edit the invoice status to drafted",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the invoice to draft"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/invoice/:id/validate": {
+      "put": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "Edit the invoice status to validated",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the invoice to validate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/invoice/:id/duplicate": {
+      "post": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "Duplicate a specific invoice",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the invoice to duplicate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/invoice/export": {
+      "post": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "export an user invoice informations into an excell file",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/invoice/:id/print": {
+      "post": {
+        "tags": [
+          "Invoice"
+        ],
+        "description": "print an invoice into a pdf file",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the invoice to print"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/estimate/create": {
+      "post": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "Create an estimate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "header",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Data of the estimate"
+          },
+          {
+            "in": "body",
+            "name": "lines",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Data of the estimate line"
+          },
+          {
+            "in": "body",
+            "name": "file",
+            "schema": {},
+            "required": true,
+            "description": "Signature of the user"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/estimateline/:id/create": {
+      "post": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "Create an estimate line for a specific estimate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "id of the estimate which contains the estimate line to create"
+          },
+          {
+            "in": "body",
+            "name": "code",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "code of the estimate line to create"
+          },
+          {
+            "in": "body",
+            "name": "article",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Article of the estimate line to create"
+          },
+          {
+            "in": "body",
+            "name": "price",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Price of the article"
+          },
+          {
+            "in": "body",
+            "name": "quantity",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Quantity of the article"
+          },
+          {
+            "in": "body",
+            "name": "discount",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Discount on the price"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/estimate/:id": {
+      "get": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "Get a specific estimate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the estimate to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "Edit a specific estimate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the estimate to update"
+          },
+          {
+            "in": "body",
+            "name": "signature",
+            "schema": {},
+            "required": true,
+            "description": "Signature of the user"
+          },
+          {
+            "in": "body",
+            "name": "client",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Targeted client informations"
+          },
+          {
+            "in": "body",
+            "name": "company",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "User's company informations"
+          },
+          {
+            "in": "body",
+            "name": "discount",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Discount on the invoice"
+          },
+          {
+            "in": "body",
+            "name": "total_ht",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Total price without including the vat"
+          },
+          {
+            "in": "body",
+            "name": "total_vat",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Total vat"
+          },
+          {
+            "in": "body",
+            "name": "total_price",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Total price without including the vat + Total vat"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "Delete a specific estimate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the estimate to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/estimateline/:id": {
+      "get": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "Get a specific estimate line",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the estimate line to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "Edit a specific estimate line",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the estimate to update"
+          },
+          {
+            "in": "body",
+            "name": "code",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Code of the estimate line to create"
+          },
+          {
+            "in": "body",
+            "name": "article",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Article of the estimate line"
+          },
+          {
+            "in": "body",
+            "name": "price",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Price of the article"
+          },
+          {
+            "in": "body",
+            "name": "quantity",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Quantity of the article"
+          },
+          {
+            "in": "body",
+            "name": "discount",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Discount on the price"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/hydratedestimate/:id": {
+      "get": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "Get an estimate with its estimate line",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "id of the estimate to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "Edit an estimate with its estimate line",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the estimate to update"
+          },
+          {
+            "in": "body",
+            "name": "header",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Data of the estimate"
+          },
+          {
+            "in": "body",
+            "name": "lines",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Data of the estimate line"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/estimate": {
+      "get": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "get all estimates of a user",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/estimate/:id/draft": {
+      "put": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "Edit an estimate status to drafted",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the estimate to draft"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/estimate/:id/validate": {
+      "get": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "Edit an estimate status to validated",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "PId of the estimate to validate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/estimate/:id/duplicate": {
+      "post": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "duplicate a specific estimate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the estimate to duplicate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/estimate/:id/invoice": {
+      "post": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "Convert a specific estimate to an invoice",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the estimate to convert"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/estimate/:id/print": {
+      "post": {
+        "tags": [
+          "Estimate"
+        ],
+        "description": "Print an estimate to a pdf file",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the estimate to print"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/client/create": {
+      "post": {
+        "tags": [
+          "Client"
+        ],
+        "description": "Create a client",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the client to create"
+          },
+          {
+            "in": "body",
+            "name": "tax_identification",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "client's tax identification"
+          },
+          {
+            "in": "body",
+            "name": "address",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Client's Address"
+          },
+          {
+            "in": "body",
+            "name": "email",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Email of the client"
+          },
+          {
+            "in": "body",
+            "name": "telephone",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Telephone of the client"
+          },
+          {
+            "in": "body",
+            "name": "fax",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Fax of the client"
+          },
+          {
+            "in": "body",
+            "name": "timbre",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Stamp of the client"
+          },
+          {
+            "in": "body",
+            "name": "vat",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Vat of the client"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/client/total": {
+      "get": {
+        "tags": [
+          "Client"
+        ],
+        "description": "Get client total paid price",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "start_date",
+            "type": "string",
+            "required": true,
+            "description": "Start date of the search"
+          },
+          {
+            "in": "query",
+            "name": "end_date",
+            "type": "string",
+            "required": true,
+            "description": "End date of the search"
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "type": "string",
+            "required": true,
+            "description": "search by client name or tax identification"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/client/:id": {
+      "get": {
+        "tags": [
+          "Client"
+        ],
+        "description": "Get a specific client",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the client"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Client"
+        ],
+        "description": "Edit a specific client",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "search",
+            "type": "string",
+            "required": true,
+            "description": "Id of the client to update"
+          },
+          {
+            "in": "body",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the client to update"
+          },
+          {
+            "in": "body",
+            "name": "tax_identification",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Tax id of the client to update"
+          },
+          {
+            "in": "body",
+            "name": "address",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Address of the client to update"
+          },
+          {
+            "in": "body",
+            "name": "vat",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Vat of the client to update"
+          },
+          {
+            "in": "body",
+            "name": "timbre",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Stamp of the client to update"
+          },
+          {
+            "in": "body",
+            "name": "email",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "email of the client to update"
+          },
+          {
+            "in": "body",
+            "name": "fax",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Fax of the client to update"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Client"
+        ],
+        "description": "Delete a specific client",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the client to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/client": {
+      "get": {
+        "tags": [
+          "Client"
+        ],
+        "description": "get all the clients of a specific user",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/article/create": {
+      "post": {
+        "tags": [
+          "Article"
+        ],
+        "description": "Create an article",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "code",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Code of the article to create"
+          },
+          {
+            "in": "body",
+            "name": "article",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Article name"
+          },
+          {
+            "in": "body",
+            "name": "price",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Price of the article to create"
+          },
+          {
+            "in": "body",
+            "name": "vat",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Vat of the article to create"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/article/total": {
+      "get": {
+        "tags": [
+          "Article"
+        ],
+        "description": "Get article total sales",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "start_date",
+            "type": "string",
+            "required": true,
+            "description": "Start date of the search"
+          },
+          {
+            "in": "query",
+            "name": "end_date",
+            "type": "string",
+            "required": true,
+            "description": "End date of the search"
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "type": "string",
+            "required": true,
+            "description": "Search article with name or code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/article/verifycode": {
+      "get": {
+        "tags": [
+          "Article"
+        ],
+        "description": "Verify the existance of the article code",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "code",
+            "type": "string",
+            "required": true,
+            "description": "Code of the article to create or to update"
+          },
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "id of the article to update"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/article/:id": {
+      "get": {
+        "tags": [
+          "Article"
+        ],
+        "description": "Get a specific article",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the article to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Article"
+        ],
+        "description": "Edit a specific article",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the article to update"
+          },
+          {
+            "in": "body",
+            "name": "code",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Code of the article to update"
+          },
+          {
+            "in": "body",
+            "name": "article",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the article to update"
+          },
+          {
+            "in": "body",
+            "name": "price",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Price of the article to update"
+          },
+          {
+            "in": "body",
+            "name": "vat",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Vat of the article to update"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Article"
+        ],
+        "description": "Delete a specific article",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the article to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/article": {
+      "get": {
+        "tags": [
+          "Article"
+        ],
+        "description": "get all articles of a specific user",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/article/:id/activate": {
+      "put": {
+        "tags": [
+          "Article"
+        ],
+        "description": "Edit an article status to activated",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the article to activate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/article/:id/deactivate": {
+      "put": {
+        "tags": [
+          "Article"
+        ],
+        "description": "Edit an article status to deactivated",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the article to deactivate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/article/:id/suspend": {
+      "put": {
+        "tags": [
+          "Article"
+        ],
+        "description": "Edit an article status to suspended",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the article to suspend"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/vat": {
+      "get": {
+        "tags": [
+          "Vat"
+        ],
+        "description": "Get all vats of a specific user",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/vat/create": {
+      "post": {
+        "tags": [
+          "Vat"
+        ],
+        "description": "Create a vat",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "vat",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Vat to create"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/vat/:id": {
+      "put": {
+        "tags": [
+          "Vat"
+        ],
+        "description": "Edit a specific vat",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the vat to update"
+          },
+          {
+            "in": "body",
+            "name": "vat",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Vat to update"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Vat"
+        ],
+        "description": "Delete a specific vat",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the vat to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/company/:id": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "Edit a specific company",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the company to update"
+          },
+          {
+            "in": "body",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the company to update"
+          },
+          {
+            "in": "body",
+            "name": "address",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Address of the company to update"
+          },
+          {
+            "in": "body",
+            "name": "telephone",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Telephone of the company to update"
+          },
+          {
+            "in": "body",
+            "name": "logo",
+            "schema": {},
+            "required": true,
+            "description": "Logo of the company to update"
+          },
+          {
+            "in": "body",
+            "name": "fax",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Fax of the company to update"
+          },
+          {
+            "in": "body",
+            "name": "rib",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Rib of the company to update"
+          },
+          {
+            "in": "body",
+            "name": "tax_identification",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Tax identification of the company to update"
+          },
+          {
+            "in": "body",
+            "name": "timbre",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Stamp of the company to update"
+          },
+          {
+            "in": "body",
+            "name": "digits",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Digits of the company to update"
+          },
+          {
+            "in": "body",
+            "name": "quantity_digits",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "digits of the quantity of the company to update"
+          },
+          {
+            "in": "body",
+            "name": "discount",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Discount of the company to update"
+          },
+          {
+            "in": "body",
+            "name": "article_edition",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Article edition of the company to update"
+          },
+          {
+            "in": "body",
+            "name": "footer",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Footer of the company"
+          },
+          {
+            "in": "body",
+            "name": "config",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Configuration of the company"
+          },
+          {
+            "in": "body",
+            "name": "invoice_template_id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "invoice template identifier"
+          },
+          {
+            "in": "body",
+            "name": "estimate_template_id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "estimate template identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/template/create": {
+      "post": {
+        "tags": [
+          "Template"
+        ],
+        "description": "Create a template",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "template",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Template of the invoice or estimate pdf"
+          },
+          {
+            "in": "body",
+            "name": "type",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Estimate or invoice"
+          },
+          {
+            "in": "body",
+            "name": "isDefault",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "The default template to use"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/template/:id": {
+      "get": {
+        "tags": [
+          "Template"
+        ],
+        "description": "Get a specific template",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the template to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Template"
+        ],
+        "description": "Edit a specific template",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the template to update"
+          },
+          {
+            "in": "body",
+            "name": "template",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Template of the invoice or estimate pdf"
+          },
+          {
+            "in": "body",
+            "name": "type",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Estimate or invoice"
+          },
+          {
+            "in": "body",
+            "name": "isDefault",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "The default template to use"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Template"
+        ],
+        "description": "Delete a specific template",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the template to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/template": {
+      "get": {
+        "tags": [
+          "Template"
+        ],
+        "description": "get all the templates as an admin",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/contact/create": {
+      "post": {
+        "tags": [
+          "Contact"
+        ],
+        "description": "Create a message to contact the support",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "message",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Message to send to the support"
+          },
+          {
+            "in": "body",
+            "name": "attachment",
+            "schema": {
+            },
+            "required": true,
+            "description": "attachment to send to the support"
+          },
+          {
+            "in": "body",
+            "name": "title",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Title of the message to send"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/contact": {
+      "get": {
+        "tags": [
+          "Contact"
+        ],
+        "description": "get all the contacts as an admin",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/contact/:id": {
+      "put": {
+        "tags": [
+          "Contact"
+        ],
+        "description": "Edit a contact status as an admin",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Id of the contact to edit"
+          },
+          {
+            "in": "body",
+            "name": "status",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Status of the contact"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "missing data"
+          },
+          "420": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    }
+  }
+}

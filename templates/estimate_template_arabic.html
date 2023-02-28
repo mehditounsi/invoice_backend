@@ -1,0 +1,435 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<style>
+		/* content editable */
+
+		/* 
+		table {
+			page-break-after: always
+		}
+
+		tr {
+			page-break-after: always
+		}
+
+		thead {
+			page-break-after: always
+			page-break-inside: always
+			page-break-after: always
+		} 
+		*/
+
+		/* heading */
+
+		h1 {
+			font: bold 100% sans-serif;
+			letter-spacing: 0.5em;
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		/* table */
+
+		table {
+			font-size: 75%;
+			table-layout: fixed;
+			width: 100%;
+			border-collapse: separate;
+			border-spacing: 1px;
+		}
+
+
+		th,
+		td {
+			border-width: 1px;
+			padding: 0.5em;
+			position: relative;
+			text-align: left;
+		}
+
+		th,
+		td {
+			border-radius: 0.2em;
+			border-style: solid;
+		}
+
+		th {
+			background: #D3D3D3;
+			border-color: #000000;
+		}
+
+		td {
+			border-color: #000000;
+		}
+
+
+
+
+		/* html {
+			font: 16px/1 'Open Sans', sans-serif;
+			overflow: auto;
+			padding: 1.5in;
+		}  
+
+		 html {
+			cursor: default;
+		}
+
+		body {
+			box-sizing: border-box;
+			height: 11in;
+			margin: 0 auto;
+			overflow: hidden;
+			padding: 5.5in;
+			width: 8.5in;
+		} */
+
+		/* body {
+			background: #FFF;
+			border-radius: 1px;
+			box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+			box-sizing: 11in;
+		}   */
+
+		.container {
+			box-sizing: 11in;
+		}
+
+		/* header */
+
+		header {
+			margin: 0in;
+		}
+
+		header:after {
+			clear: both;
+			content: "";
+			display: table;
+		}
+
+		header address {
+			float: right;
+			font-size: 110%;
+			font-style: normal;
+			font-family: Arial;
+			line-height: 1.25;
+			margin: 0em;
+		}
+
+		header address p {
+			margin: 0 0 0;
+		}
+
+		header span,
+		header img {
+			display: block;
+			float: left;
+		}
+
+		header span {
+			max-height: 25%;
+			max-width: 60%;
+			position: relative;
+		}
+
+		header img {
+			max-height: 50%;
+			max-width: 50%;
+		}
+
+
+		/* article */
+
+		article,
+		article address,
+		table.meta,
+		table.inventory {
+			margin: 0 0 0em;
+		}
+
+		article:after {
+			clear: both;
+			content: "";
+			display: table;
+		}
+
+		article address {
+			float: right;
+			font-size: 130%;
+			font-family: Arial;
+			font-style: normal;
+			margin-right: 120px
+		}
+
+		/* table meta & balance */
+
+		table.meta {
+			float: left;
+			width: 36%;
+			/* border-collapse: collapse ;
+			border-spacing: 1px; */
+		}
+
+		table.balance {
+			float: right;
+			width: 36%;
+		}
+
+		table.meta:after,
+		table.balance:after {
+			clear: both;
+			content: "";
+			display: table;
+		}
+
+		/* table meta */
+
+		table.meta th {
+			width: 40%;
+		}
+
+		table.meta td {
+			width: 60%;
+		}
+
+		/* table items */
+
+		table.inventory {
+			clear: both;
+			width: 100%;
+			margin: 0.5in 0in 0.5in 0in;
+			border-collapse: collapse;
+			border-spacing: 1px;
+		}
+
+		table.inventory th {
+			font-weight: bold;
+			text-align: center;
+		}
+
+		table.inventory td:nth-child(1) {
+			width: 15%;
+			text-align: center;
+		}
+
+		table.inventory td:nth-child(2) {
+			width: 40%;
+		}
+
+		table.inventory td:nth-child(3) {
+			text-align: center;
+			width: 15%;
+
+		}
+
+		table.inventory td:nth-child(4) {
+			text-align: center;
+			width: 15%;
+
+		}
+
+		table.inventory td:nth-child(5) {
+			text-align: center;
+			width: 15%;
+
+		}
+
+		table.inventory td:nth-child(6) {
+			text-align: center;
+			width: 15%;
+
+		}
+
+		/* table balance */
+
+		table.balance {
+			border-collapse: collapse;
+			border-spacing: 1px;
+		}
+
+		table.balance th,
+		table.balance td {
+			width: 50%;
+		}
+
+		table.balance td {
+			text-align: right;
+		}
+
+		/* amount in words */
+
+		/* signature */
+
+
+		signature {
+			float: left;
+
+		}
+
+		signature img {
+			max-height: 50%;
+			max-width: 50%;
+		}
+
+		#page-break {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 20px;
+			padding: 20px;
+			background-color: red;
+			text-align: center;
+		}
+
+
+		@page {
+			margin: 0;
+		}
+	</style>
+</head>
+
+<body style="margin:0.2in 0.5in 0in 0.5in;">
+	<header>
+		<address style="text-transform: uppercase;font-family: Arial">
+
+			<p>{{company.name}}</p>
+			<br>
+			<p>{{company.address}}</p>
+			<br>
+			<p>{{company.telephone}}</p>
+
+		</address>
+		<span><img style="width : 30%" src="data:image/png;base64, {{logo}}"></span>
+	</header>
+	<br>
+	<br>
+	<br>
+
+	<table style="height: 50px; width: 36.5% ; float:right ; margin-bottom: 40px ; border-collapse: collapse ;">
+		<tr>
+			<th style="width:25%; border : none;border-top-style: solid ;border-left-style: solid; border-width : 1px">
+				<span>الفاتورة إلى</span></th>
+			<td
+				style="width:40%;border : none ; border-top-style: solid; border-right-style: solid ; border-width : 1px">
+				<span>{{client.name}}</span></td>
+		</tr>
+		<tr>
+			<th style="width:25%;border : none; border-left-style: solid; border-width : 1px"><span>التعريف
+					الضريبي</span></th>
+			<td style="width:40%;border : none ; border-right-style: solid; border-width : 1px">
+				<span>{{client.tax_identification}}</span></td>
+		</tr>
+		<tr>
+			<th
+				style="width:25%; border : none; border-left-style: solid; border-bottom-style: solid; border-width : 1px">
+				<span>عنوان</span></th>
+			<td
+				style="width:40%;border : none ; border-right-style: solid ; border-bottom-style: solid; border-width : 1px">
+				<span>{{client.address}}</span></td>
+		</tr>
+	</table>
+
+	<address style="text-transform: uppercase;font-family: Arial">
+
+		<p><b>رقم الفاتورة :</b> {{estimate.number}}</p>
+
+		<p><b>تاريخ :</b> {{date}}</p>
+
+	</address>
+	{{#pages}}
+	<div>
+
+
+		<article>
+
+			<table class="inventory">
+				<thead>
+					<tr>
+						<th><span>إشارة</span></th>
+						<th style="width:45%;"><span>سلعة</span></th>
+						<th><span>سعر</span></th>
+						<th><span>مقدار</span></th>
+						<th><span>خفض</span></th>
+						<th><span>المجموع</span></th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					{{#data}}
+					<tr>
+						<td><span><b>{{estimate_line_code}}</b></span></td>
+						<td><span><b>{{estimate_line_article}}</b></span></td>
+						<td><span><b>{{estimate_line_price}}</b></span><span data-prefix> DT</span></td>
+						<td><span><b>{{quantity}}</b></span></td>
+						<td><span><b>{{discount}}</b></span><span data-prefix> DT</span></td>
+						<td><span><b>{{total_line_ttc}}</b></span><span data-prefix> DT</span></td>
+					</tr>
+					{{/data}}
+				</tbody>
+			</table>
+
+
+
+		</article>
+	</div>
+	{{/pages}}
+
+	{{#beforeFooterBreak}}
+	<div style="page-break-before: always;">
+		<table class="balance">
+			<tr>
+				<th><span>المجموع بدون ضرائب</span></th>
+				<td><span>{{estimate.total_ht}}</span><span data-prefix> DT</span></td>
+			</tr>
+			<tr>
+				<th><span>إجمالي ضريبة القيمة المضافة</span></th>
+				<td><span>{{estimate.total_vat}}</span><span data-prefix> DT</span></td>
+			</tr>
+			<tr>
+				<th><span>ضريبة القيمة المضافة الإجمالية</span></th>
+				<td><span>{{estimate.total_price}}</span><span data-prefix> DT</span></td>
+			</tr>
+		</table>
+		<div>
+			<p>{{amountInWords}}</p>
+		</div>
+		<signature>
+			<img id="img" src="data:image/png;base64, {{signature}}">
+		</signature>
+
+	</div>
+	{{/beforeFooterBreak}}
+	{{^beforeFooterBreak}}
+	<div style="page-break-before: avoid">
+		<table class="balance">
+			<tr>
+				<th><span>المجموع بدون ضرائب</span></th>
+				<td><span>{{estimate.total_ht}}</span><span data-prefix> DT</span></td>
+			</tr>
+			<tr>
+				<th><span>إجمالي ضريبة القيمة المضافة</span></th>
+				<td><span>{{estimate.total_vat}}</span><span data-prefix> DT</span></td>
+			</tr>
+			<tr>
+				<th><span>ضريبة القيمة المضافة الإجمالية</span></th>
+				<td><span>{{estimate.total_price}}</span><span data-prefix> DT</span></td>
+			</tr>
+		</table>
+		<div>
+			<p>{{amountInArabicWords}}</p>
+		</div>
+
+
+		<signature>
+			<span><img id="img" src="data:image/png;base64, {{signature}}"></span>
+		</signature>
+
+	</div>
+	{{/beforeFooterBreak}}
+</body>
+
+</html>
